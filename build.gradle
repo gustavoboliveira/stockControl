@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.8-SNAPSHOT'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.gustavoboliveira'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+	implementation(
+			'org.springframework.boot:spring-boot-starter-data-jpa',
+			'org.springframework.boot:spring-boot-starter-web',
+			'org.springframework.boot:spring-boot-starter-actuator',
+			'org.liquibase:liquibase-core',
+			'org.modelmapper:modelmapper:3.1.1',
+			'io.springfox:springfox-swagger-ui:3.0.0',
+			'io.springfox:springfox-swagger2:3.0.0',
+			'io.springfox:springfox-boot-starter:3.0.0',
+			'mysql:mysql-connector-java:8.0.30'
+	)
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
