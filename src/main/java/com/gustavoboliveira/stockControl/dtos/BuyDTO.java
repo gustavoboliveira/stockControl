@@ -18,7 +18,7 @@ public class BuyDTO {
 
     private Store store;
 
-    private List<Product> productList;
+    private List<ProductDTO> productDTOList;
 
     @Override
     public String toString() {

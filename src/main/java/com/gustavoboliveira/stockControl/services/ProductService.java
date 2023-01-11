@@ -41,8 +41,9 @@ public class ProductService {
     public ProductDTO findById(Long id){
         Optional<Product> product = productRepository.findById(id);
 
-        if(!product.isPresent())
+        if(!product.isPresent()) {
             return null;
+        }
 
         return modelMapper.map(product.get(), ProductDTO.class);
     }
@@ -51,9 +52,9 @@ public class ProductService {
     public List<ProductDTO> findAll(){
         List<Product> products = productRepository.findAll();
 
-        if(products.isEmpty())
+        if(products.isEmpty()) {
             return new ArrayList<>();
-
+        }
         return modelMapper.map(products, new TypeToken<List<ProductDTO>>() {}.getType());
     }
 
@@ -61,17 +62,21 @@ public class ProductService {
     public ProductDTO update(ProductDTO productDTO){
         Product product = productRepository.findById(productDTO.getId()).get();
 
-        if(!productDTO.getName().equalsIgnoreCase(product.getName()))
+        if(!productDTO.getName().equalsIgnoreCase(product.getName())) {
             product.setName(productDTO.getName());
+        }
 
-        if(!productDTO.getBuyPrice().equals(product.getBuyPrice()))
+        if(!productDTO.getBuyPrice().equals(product.getBuyPrice())) {
             product.setBuyPrice(productDTO.getBuyPrice());
+        }
 
-        if(!productDTO.getSellPrice().equals(product.getSellPrice()))
+        if(!productDTO.getSellPrice().equals(product.getSellPrice())) {
             product.setSellPrice(productDTO.getSellPrice());
+        }
 
-        if(!productDTO.getQuantity().equals(product.getQuantity()))
+        if(!productDTO.getQuantity().equals(product.getQuantity())) {
             product.setQuantity(productDTO.getQuantity());
+        }
 
         product = productRepository.saveAndFlush(product);
 

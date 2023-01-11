@@ -21,8 +21,9 @@ public class ProductController {
     public ResponseEntity findAll(){
         List<ProductDTO> products = productService.findAll();
 
-        if(products.isEmpty())
-            return new ResponseEntity<>("PRODUCTS NOT FOUND", HttpStatus.BAD_REQUEST);
+        if(products.isEmpty()) {
+            return new ResponseEntity<>("PRODUCTS NOT FOUND", HttpStatus.NOT_FOUND);
+        }
 
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
@@ -31,8 +32,9 @@ public class ProductController {
     public ResponseEntity findById(@PathVariable Long id){
         ProductDTO product = productService.findById(id);
 
-        if(Objects.isNull(product))
-            return new ResponseEntity<>("PRODUCT NOT FOUND", HttpStatus.BAD_REQUEST);
+        if(Objects.isNull(product)) {
+            return new ResponseEntity<>("PRODUCT NOT FOUND", HttpStatus.NOT_FOUND);
+        }
 
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
@@ -41,8 +43,9 @@ public class ProductController {
     public ResponseEntity addProduct(@RequestBody ProductDTO productDTO){
         ProductDTO product = productService.save(productDTO);
 
-        if(Objects.isNull(product.getId()))
+        if(Objects.isNull(product.getId())) {
             return new ResponseEntity<>("PRODUCT NOT SAVED", HttpStatus.BAD_REQUEST);
+        }
 
         return new ResponseEntity<>(product.toString(), HttpStatus.OK);
     }
@@ -51,8 +54,9 @@ public class ProductController {
     public ResponseEntity deleteProduct(@PathVariable Long id){
         boolean deleted = productService.delete(id);
 
-        if(!deleted)
+        if(!deleted) {
             return new ResponseEntity<>("PRODUCT NOT DELETED", HttpStatus.BAD_REQUEST);
+        }
 
         return new ResponseEntity<>("PRODUCT DELETED", HttpStatus.OK);
     }

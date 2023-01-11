@@ -20,8 +20,9 @@ public class CustomerController {
     public ResponseEntity addCustomer(@RequestBody CustomerDTO customerDTO){
         CustomerDTO customer = customerService.save(customerDTO);
 
-        if(Objects.isNull(customer.getId()))
+        if(Objects.isNull(customer.getId())) {
             return new ResponseEntity<>("CUSTOMER NOT SAVED", HttpStatus.BAD_REQUEST);
+        }
 
         return new ResponseEntity<>(customer.toString(), HttpStatus.OK);
     }

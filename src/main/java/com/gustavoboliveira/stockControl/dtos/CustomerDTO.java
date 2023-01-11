@@ -1,9 +1,6 @@
 package com.gustavoboliveira.stockControl.dtos;
 
-import com.gustavoboliveira.stockControl.models.Address;
 import lombok.*;
-
-import javax.persistence.Embedded;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,8 +13,7 @@ public class CustomerDTO {
 
     private String cpf;
 
-    @Embedded
-    private Address address;
+    private AddressDTO address;
 
     @Override
     public String toString() {

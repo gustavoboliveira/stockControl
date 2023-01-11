@@ -1,10 +1,7 @@
 package com.gustavoboliveira.stockControl.dtos;
 
-import com.gustavoboliveira.stockControl.models.Address;
-import com.gustavoboliveira.stockControl.models.Customer;
 import lombok.*;
 
-import javax.persistence.Embedded;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +14,9 @@ public class StoreDTO {
 
     private String corporateName;
 
-    private List<Customer> customerList = new ArrayList<>();
+    private List<CustomerDTO> customerList = new ArrayList<>();
 
-    @Embedded
-    private Address address;
+    private AddressDTO addressDTO;
 
     @Override
     public String toString() {
