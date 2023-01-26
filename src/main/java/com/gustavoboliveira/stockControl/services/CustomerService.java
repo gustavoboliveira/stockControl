@@ -4,19 +4,19 @@ import com.gustavoboliveira.stockControl.dtos.CustomerDTO;
 import com.gustavoboliveira.stockControl.models.Customer;
 import com.gustavoboliveira.stockControl.repositories.CustomerRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.Objects;
 
 @Service
 public class CustomerService {
 
-    @Autowired
+    @Resource
     private CustomerRepository customerRepository;
 
-    @Autowired
+    @Resource
     private ModelMapper modelMapper;
 
     @Transactional

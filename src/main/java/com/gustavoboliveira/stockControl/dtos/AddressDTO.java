@@ -1,5 +1,6 @@
 package com.gustavoboliveira.stockControl.dtos;
 
+import com.gustavoboliveira.stockControl.models.Address;
 import lombok.*;
 
 @AllArgsConstructor
@@ -16,5 +17,13 @@ public class AddressDTO {
     private Integer number;
 
     private String state;
+
+    public AddressDTO(Address address){
+        this.street = address.getStreet();
+        this.postalCode = address.getPostalCode();
+        this.city = address.getCity();
+        this.number = address.getNumber();
+        this.state = address.getState();
+    }
 
 }

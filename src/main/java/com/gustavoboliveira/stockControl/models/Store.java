@@ -11,14 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "tb_store")
-public class Store {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.PRIVATE)
-    private Long id;
-
-    private String corporateName;
+public class Store extends BasicModel{
 
     @JsonIgnore
     @OneToMany(mappedBy = "id")

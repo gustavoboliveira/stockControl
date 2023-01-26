@@ -2,11 +2,11 @@ package com.gustavoboliveira.stockControl.controllers;
 
 import com.gustavoboliveira.stockControl.dtos.ProductDTO;
 import com.gustavoboliveira.stockControl.services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +14,7 @@ import java.util.Objects;
 @RequestMapping(value = "/products")
 public class ProductController {
 
-    @Autowired
+    @Resource
     private ProductService productService;
 
     @GetMapping

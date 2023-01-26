@@ -10,14 +10,7 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "tb_product")
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.PRIVATE)
-    private Long id;
-
-    private String name;
+public class Product extends BasicModel{
 
     private BigDecimal buyPrice;
 

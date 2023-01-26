@@ -1,6 +1,9 @@
 package com.gustavoboliveira.stockControl.models;
 
 import javax.persistence.*;
+
+import com.gustavoboliveira.stockControl.dtos.CustomerDTO;
+import com.gustavoboliveira.stockControl.utils.Convertible;
 import lombok.*;
 
 @AllArgsConstructor
@@ -8,17 +11,15 @@ import lombok.*;
 @Data
 @Entity
 @Table(name = "tb_customer")
-public class Customer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.PRIVATE)
-    private Long id;
-
-    private String name;
+public class Customer extends BasicModel implements Convertible<CustomerDTO> {
 
     private String cpf;
 
     @Embedded
     private Address address;
+
+    @Override
+    public CustomerDTO convert() {
+        return new CustomerDTO(this);
+    }
 }

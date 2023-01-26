@@ -16,7 +16,7 @@ public class StoreDTO {
 
     private List<CustomerDTO> customerList = new ArrayList<>();
 
-    private AddressDTO addressDTO;
+    private AddressDTO address;
 
     @Override
     public String toString() {
